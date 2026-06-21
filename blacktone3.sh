@@ -231,10 +231,3 @@ clear
 echo "Blacktone software is configured... "
 sleep 4
 exit 0
-
-
-
-
-
-
-
