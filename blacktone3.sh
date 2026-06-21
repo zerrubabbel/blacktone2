@@ -32,8 +32,49 @@ clear
 
 echo "Checking for needed files... "
 
+git_clone_check() {
+    [[ -d "$SCRIPT_DIR/configs" ]] || {
+        echo "Configs directory not found."
+        echo "Was blacktone3.sh launched from the cloned repository?"
+        exit 1
+    }
+}
+
+git_clone_check
+
 dependency_check() {
-  sleep 2
+    local required_files=(
+        "$SCRIPT_DIR/configs/.bashrc"
+        "$SCRIPT_DIR/configs/.arch-notes"
+        "$SCRIPT_DIR/configs/config.jsonc"
+        "$SCRIPT_DIR/configs/logo.png"
+        "$SCRIPT_DIR/configs/kitty.conf"
+        "$SCRIPT_DIR/configs/environment"
+        "$SCRIPT_DIR/configs/Bibata-Original-Classic.tar.xz"
+        "$SCRIPT_DIR/configs/BeautyDream-GTK-20240521180535.tar.gz"
+    )
+
+    for file in "${required_files[@]}"; do
+        if [[ ! -f "$file" ]]; then
+            echo "Missing required file: $file"
+            exit 1
+        fi
+    done
+
+    local required_dirs=(
+        "$SCRIPT_DIR/configs/Wallpeppers"
+    )
+
+    for dir in "${required_dirs[@]}"; do
+        if [[ ! -d "$dir" ]]; then
+            echo "Missing required directory: $dir"
+            exit 1
+        fi
+    done
+
+    echo "Needed files found... "
+    echo "Needed directories found... "
+    sleep 3
 }
 
 dependency_check
