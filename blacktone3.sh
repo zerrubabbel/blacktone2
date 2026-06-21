@@ -174,7 +174,7 @@ if [[ ! -f "/etc/environment" ]]; then
 fi
 
 sudo cp "/etc/environment" "/etc/environemtn.bak"
-cp "$SCRIPT_DIR/configs/environment" "/etc/environment"
+sudo cp "$SCRIPT_DIR/configs/environment" "/etc/environment"
 
 # CINNAMON CONFIGURATION
 
