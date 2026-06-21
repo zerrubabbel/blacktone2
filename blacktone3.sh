@@ -32,11 +32,11 @@ clear
 
 echo "Checking for needed files... "
 
-dependency-check() {
+dependency_check() {
   sleep 2
 }
 
-dependency-check
+dependency_check
 
 clear
 
@@ -94,7 +94,7 @@ sleep 2
 
 echo "Blacktone is about to enable the sddm display manager, do you wish to continue?"
 
-sddm-enable() {
+sddm_enable() {
   local dm_choice
 
   read -rp "to enable sddm, type exactly 'yes', and press enter:  " dm_choice
@@ -105,7 +105,7 @@ sddm-enable() {
   fi
 }
 
-sddm-enable
+sddm_enable
 
 clear
 
@@ -173,7 +173,7 @@ if [[ ! -f "/etc/environment" ]]; then
     sudo touch "/etc/environment"
 fi
 
-sudo cp "/etc/environment" "/etc/environemtn.bak"
+sudo cp "/etc/environment" "/etc/environemnt.bak"
 sudo cp "$SCRIPT_DIR/configs/environment" "/etc/environment"
 
 # CINNAMON CONFIGURATION
