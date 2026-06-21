@@ -1,0 +1,94 @@
+## ARCH NOTES ##
+## ~/.arch-notes
+
+== Useful Packages ==
+alacritty
+kitty
+ufw
+iwd
+ntfs-3g
+noto-fonts-cjk
+ibus
+ibus-skk
+ibus-kkc
+fcitx
+fcitx-skk
+fcitx-kkc
+fcitx5
+fcitx5-skk
+fcitx5-kkc
+bluez
+btop
+fastfetch
+gimp
+nano
+vlc
+yay
+reflector
+qownnotes
+screenfetch
+xdg-user-dirs (xdg-user-dirs-update at startup i.e. xinitrc)
+
+
+== Useful Commands ==
+
+= Unzip tar files =
+# sudo tar -xzvf filename.tar.gz -C /directory
+# sudo tar -xvf filename.tar.xz -C /directory
+
+= Save and import package lists =
+# pacman -Qq > pkglist.txt
+# sudo pacman -S - < pkglist.txt
+
+= Optimize Arch mirrors =
+# sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+# sudo reflector --verbose --sort rate -l 50 -c 'United States' -p https --save /etc/pacman.d/mirrorlist
+
+= Find mirror countries =
+# reflector --list-countries
+
+= Manage pacman Cache =
+# sudo pacman -S pacman-contrib
+# sudo systemctl enable paccache.timer
+
+= Add a Kernel = (linux-lts)
+# sudo nano /etc/default/grub
+# = set: GRUB_DISABLE_SUBMENU=y
+# sudo pacman -S linux-lts
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+= mkinitcpio =
+# mkinitcpio -P
+
+= Add a grub entry = (Windows at uuid=wxyz-abcd)
+# /etc/grub.d/40_custom # add:
+# menuentry "Windows 11" --class windows --class os {
+#     search --fs-uuid --no-floppy --set=root wxyz-abcd
+#   chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi # (default path to Windows EFI)
+# Run: sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+= Find File Systesm +
+# lsblk -f
+
+= Fix flatpak cursor disrespect =
+# flatpak --user override --filesystem=/home/$USER/.icons/:ro
+# flatpak --user override --filesystem=/usr/share/icons/:ro
+
+= Resolving hangups at 'Triggering Uevents'
+# Press 'e' at grub
+# To the Linux line, add 'acpi=off pci=noaer noapic nomodeset'
+
+== Internet Privacy ==
+
+= Incognet Pi Hole =
+# IPv4: DNS= 23.137.253.253, 23.137.254.100
+
+= Cloudflare DNS server=
+# IPv4: DNS= 1.1.1.1, 1.0.0.1
+
+= Access Hotel Internet =
+# https://192.168.1.1
+# icanhazip.com
+
+= Root Image Formula =
+# sudo dd if=/dev/nvme0n1pX of=/path/to/backup.img bs=4M status=progress
