@@ -121,7 +121,7 @@ sudo pacman -S --needed --noconfirm \
 
 flatpak install --noninteractive flathub \
   com.brave.Browser \
-  app.zen_browswer.zen \
+  app.zen_browser.zen \
   dev.edfloreshz.CosmicTweaks \
   net.davidotek.pupgui2
 
