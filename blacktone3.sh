@@ -120,7 +120,7 @@ clear
 echo "Installing Desktop Environments... "
 
 sudo pacman -Syu
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   plasma \
   cinnamon \
   cosmic \
