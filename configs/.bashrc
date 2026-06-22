@@ -166,7 +166,7 @@ reminder () {
     	"Question everything! Ideas worth believing meet their burden of proof."
     )
 
-    printf '%s\n' "${reminders[RANDOM % ${reminders[@]}]}"
+    printf '%s\n' "${reminders[RANDOM % ${#reminders[@]}]}"
 }
 
 ## HEADER ##
