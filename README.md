@@ -1,9 +1,9 @@
 # BLACKTONE2
+**WARNING:  BUILD IN PROGRESS. DO NOT RUN SCRIPT YET!!**
+
 Part 2 of my own personal Arch Linux desktop build. Blacktone is not meant for wide use, but may be used at user discretion.
 
 Support for Blacktone is not offered.
-
-**WARNING:  BUILD IN PROGRESS. DO NOT RUN SCRIPT YET!!**
 
 The Starting point for Blacktone can be found at: https://github.com/zerrubabbel/blacktone
 
