@@ -85,7 +85,7 @@ clear
 
 echo "This is Blacktone setup part 2."
 echo " "
-echo "This Blacktone script assumes som prerecquisite conditions are met"
+echo "This Blacktone script assumes some prerequisite conditions are met"
 sleep 3
 echo " "
 echo "1. You have completed Blacktone setup part 1"
@@ -226,6 +226,51 @@ sudo cp "$SCRIPT_DIR/configs/environment" "/etc/environment"
 
 
 # CLEANUP AND EXIT
+
+cleanup() {
+    local keep_choice
+    
+    echo "Would you like to KEEP Blacktone build resources in your filesystem? [no] "
+
+    read -rp "To KEEP Blacktone build resources, type exactly 'yes' and press enter:  " keep_choice
+
+    if [[ "$keep_choice" = 'yes' ]]; then
+        echo "Build resources will be left alone... "
+        echo " "
+        echo "Default Locations:"
+        echo "/blacktone1.sh"
+        echo "~/blacktone2.sh"
+        echo "~/.blacktone2/"
+    else
+        echo "Removing Blacktone build resources... "
+
+        if [[ -f "/blacktone1.sh" ]]; then
+            sudo rm -f "/blacktone1.sh"
+        fi
+
+        if [[ -f "$HOME/blacktone1.sh" ]]; then
+            rm -f "$HOME/blacktone1.sh"
+        fi
+
+        if [[ -f "./blacktone1.sh" ]]; then
+            sudo rm -f "./blacktone1.sh"
+        fi
+
+        if [[ -f "$HOME/blacktone2.sh" ]]; then
+            rm -f "$HOME/blacktone2.sh"
+        fi
+
+        if [[ -d "$HOME/.blacktone2/" ]]; then
+            rm -rf "$HOME/.blacktone2/"
+        fi
+
+        echo "Cleanup complete... "
+    fi
+
+    sleep 3
+}
+
+cleanup
 
 clear
 echo "Blacktone software is configured... "
